@@ -1,7 +1,7 @@
 dataSource {
-    pooled = true
-    driverClassName = "org.h2.Driver"
-    username = "sa"
+    driverClassName = "com.mysql.jdbc.Driver"
+    dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+    username = ""
     password = ""
 }
 hibernate {
@@ -15,8 +15,10 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            dbCreate = "create-drop"
+            url = "jdbc:mysql://localhost:3306/Quora?autoreconnect=true"
+            username = "admin"
+            password = "quora"
         }
     }
     test {
